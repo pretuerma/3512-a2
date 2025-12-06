@@ -18,18 +18,27 @@
   </header>
 
   <main>
-    <article id="home" class="view">Welcome to the Home Page</article>
+    <article id="home" class="view">
+      <h1>Welcome to Shoppee</h1>
+      <p>Discover styles that match your vibe.</p>
+      <div id="homeFeaturedItems"></div>
+    </article>
 
-    <article id="browse" class="view">
+    <article id="browse" class="view hidden">
       <h2>Browse Products</h2>
+      <div id="results"></div>
     </article>
 
-    <article id="singleProduct" class="view">
+    <article id="singleProduct" class="view hidden">
       <h2>Product Details</h2>
+      <button id="backToBrowse">&larr; Back</button>
+      <div id="productDetails"></div>
     </article>
 
-    <article id="cart" class="view">
+    <article id="cart" class="view hidden">
       <h2>Shopping Cart</h2>
+      <div id="cartItems"></div>
+      <div id="cartSummary"></div>
     </article>
   </main>
 
@@ -51,7 +60,9 @@
     <button id="closeAbout">Close</button>
   </dialog>
 
-  <footer id="siteFooter"><p id="footerText"></p></footer>
+  <footer>
+    <p>&copy; 2025 Shoppee</p>
+  </footer>
 
   <script src="app.js"></script>
 </body>
