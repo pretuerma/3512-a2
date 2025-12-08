@@ -5,64 +5,177 @@
   <meta charset="UTF-8">
   <title>Shoppee</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.tailgrids.com/tailgrids-fallback.css" rel="stylesheet" />
+
 </head>
 
 <body>
   <header>
     <nav>
-      <button id="homeBtn">Home</button>
-      <button id="browseBtn">Browse</button>
-      <button id="aboutBtn">About</button>
-      <button id="cartBtn">Cart</button>
+      <span class="logo">SHOPPEE</span>
+
+      <div class="nav-center">
+        <button id="homeBtn">Home</button>
+        <button id="browseBtn">Browse</button>
+        <button id="aboutBtn">About</button>
+      </div>
+
+      <button id="cartBtn" class="cart-icon"><i class="fa fa-shopping-cart"></i>
+        <span id="cartCount" class="cart-count"></span>
+      </button>
+
     </nav>
   </header>
 
   <main>
     <article id="home" class="view">
-      <h1>Welcome to Shoppee</h1>
-      <p>Discover styles that match your vibe.</p>
-      <div id="homeFeaturedItems"></div>
+      <div class="hero-wrapper">
+          <img src="images/image.png" alt="Featured style" class="hero-img">
+          <div class="hero-text">
+              <h1 class="text-5xl font-light">Discover styles that match your vibe.</h1>
+          </div>
+      </div>
+
+      <section class="featured-section">
+          <h2 class="featured-heading hidden">Trending</h2>
+          <div id="homeTrending" class="bg-white"></div>
+      </section>
+
     </article>
 
+
     <article id="browse" class="view hidden">
-      <h2>Browse Products</h2>
+      <div class="bg-white">
+      <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold tracking-tight text-gray-900">Browse</h2>
+      </div>
+
+      <div class="flex flex-wrap gap-4 mb-6">
+        <input 
+          id="searchInput" 
+          type="text"
+          placeholder="Search products..." 
+          class="border rounded px-3 py-2 w-full sm:w-64"
+        />
+
+        <select id="genderSelect" class="border rounded px-3 py-2">
+          <option value="">All Genders</option>
+          <option value="mens">Mens</option>
+          <option value="womens">Womens</option>
+          <option value="unisex">Unisex</option>
+        </select>
+
+        <select id="categorySelect" class="border rounded px-3 py-2">
+          <option value="">All Categories</option>
+          <option value="Tops">Tops</option>
+          <option value="Bottoms">Bottoms</option>
+          <option value="Shoes">Shoes</option>
+          <option value="Outerwear">Outerwear</option>
+          <option value="Dresses">Dresses</option>
+        </select>
+
+        <select id="sortSelect" class="border rounded px-3 py-2">
+          <option value="name">Sort By</option>
+          <option value="lowPrice">Price: Low → High</option>
+          <option value="highPrice">Price: High → Low</option>
+          <option value="name">Alphabetical</option>
+        </select>
+        
+        <button id="clearFilters" class="text-red-600 text-sm hover:underline">
+          Clear All
+        </button>
+        
+      </div>
+
       <div id="results"></div>
     </article>
 
     <article id="singleProduct" class="view hidden">
-      <h2>Product Details</h2>
-      <button id="backToBrowse">&larr; Back</button>
       <div id="productDetails"></div>
     </article>
 
     <article id="cart" class="view hidden">
-      <h2>Shopping Cart</h2>
-      <div id="cartItems"></div>
-      <div id="cartSummary"></div>
+      <div class="bg-white">
+        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 mb-10">Shopping Cart</h2>
+          
+          <div id="cartContent"></div>
+        </div>
+      </div>
     </article>
+
   </main>
 
-  <dialog id="about">
-    <h2>About Shoppee</h2>
-    <p>
-      Shoppee is an online clothing store that lets you browse, view, and explore a variety of fashion items
-      in a simple single-page experience.
-    </p>
-    <ul>
-      <li><strong>Technologies used:</strong> HTML, CSS, JavaScript, Tailwind CSS</li>
-      <li><strong>Group member:</strong> Pamela Retuerma</li>
-      <li><strong>GitHub repo:</strong>
-        <a href="https://github.com/pretuerma/3512-a2" target="_blank">
-          https://github.com/pretuerma/3512-a2
+  <dialog id="about" class="bg-white p-8 rounded-none border border-gray-300 max-w-lg w-full">
+  
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-3xl font-bold text-gray-900 tracking-tight"><strong>About SHOPPEE</strong></h2>
+      <button id="closeAbout" class="text-gray-600 text-sm leading-relaxed">✖</button>
+    </div>
+
+    <p class="mt-4 text-gray-500 mb-8 italic">A clean, simple single-page shopping experience.</p>
+
+    <section class="py-4">
+      <h3 class="text-lg font-bold text-gray-800 mb-2"><strong>What is this project?</strong></h3>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        This project was created for COMP 3512 Web II as a single-page
+        application that fetches product data and dynamically updates the page
+        based on user interaction.
+
+        This project uses TailWind CSS for styling.
+      </p>
+    </section>
+
+    <section class="py-4">
+      <h3 class="text-lg font-bold text-gray-800 mb-2"><strong>Technologies Used</strong></h3>
+      <ul class="list-disc list-inside text-gray-600 ml-4 text-sm leading-relaxed">
+        <li>HTML</li>
+        <li>CSS (TailWind)</li>
+        <li>JavaScript - SPA logic (fetch, DOM, LocalStorage, etc.)</li>
+      </ul>
+    </section>
+
+    <section class="py-4">
+      <h3 class="text-lg font-bold text-gray-800 mb-2"><strong>Group Members</strong></h3>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        Pamela Retuerma
+      </p>
+    </section>
+
+    <section class="py-4">
+      <h3 class="text-lg font-bold text-gray-800 mb-2"><strong>GitHub Repository</strong></h3>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        <a href="https://github.com/pretuerma/3512-a2" target="_blank" class="text-gray-600 hover:text-gray-300 underline font-normal">
+          github.com/pretuerma/3512-a2
         </a>
-      </li>
-    </ul>
-    <button id="closeAbout">Close</button>
+      </p>
+    </section>
+
   </dialog>
 
-  <footer>
-    <p>&copy; 2025 Shoppee</p>
+
+  <footer class="bg-black text-white py-4 mt-auto">
+    <div class="mx-auto max-w-7xl px-4">
+      
+      <div class="text-center text-sm space-y-2">
+        <p>
+          &copy; 2025 SHOPPEE. All Rights Reserved.
+        </p>
+        
+        <p>
+          <a href="https://github.com/pretuerma/3512-a2" target="_blank" class="text-white hover:text-gray-400 flex items-center justify-center space-x-2">
+            <i class="fa fa-github" style="font-size: 1.1em;"></i>
+            <span>GitHub Repository</span>
+          </a>
+        </p>
+      </div>
+    </div>
   </footer>
+
 
   <script src="app.js"></script>
 </body>
