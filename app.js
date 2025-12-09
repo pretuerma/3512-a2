@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const API_URL = "data-minifed.json";
+  // const API_URL = "data-minifed.json";
+  const API_URL = "https://gist.githubusercontent.com/rconnolly/d37a491b50203d66d043c26f33dbd798/raw/37b5b68c527ddbe824eaed12073d266d5455432a/clothing-compact.json";
   let products = [];
   let cart = loadCart();
 
@@ -51,20 +52,30 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById(id).classList.remove("hidden");
   }
 
-  // Load data
-  fetch(API_URL)
-    .then(res => res.json())
-    .then(data => {
-      products = data;
+  const cachedProducts = localStorage.getItem("shoppee-products");
 
-      showHome(products);
-      applyFilters(); 
-      loadShippingState();
-      showCart(); 
-      updateCartCountDisplay();
+  if (cachedProducts) {
+    products = JSON.parse(cachedProducts);
+    initializeApp(); 
+  } else {
+    fetch(API_URL)
+      .then(res => res.json())
+      .then(data => {
+        products = data;
+        localStorage.setItem("shoppee-products", JSON.stringify(products));
+        initializeApp();
+      })
+      .catch(err => console.error("Error loading product data:", err));
+  }
 
-      showView("home");
-    });
+  function initializeApp() {
+    showHome(products);
+    applyFilters();
+    loadShippingState();
+    showCart();
+    updateCartCountDisplay();
+    showView("home");
+  }
 
   // HOME VIEW
   function showHome(products) {
