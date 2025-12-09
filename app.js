@@ -1,3 +1,7 @@
+// This project uses Tailwind CSS as the primary framework, 
+// with additional UI components sourced from Flowbite and Tailwind CSS Plus.
+// https://tailwindcss.com/plus
+// https://flowbite.com/
 document.addEventListener("DOMContentLoaded", () => {
 
   // const API_URL = "data-minifed.json";
@@ -56,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (cachedProducts) {
     products = JSON.parse(cachedProducts);
-    initializeApp(); 
+    initializeApp();  
   } else {
     fetch(API_URL)
       .then(res => res.json())
@@ -362,6 +366,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <div id="productDetailsContent">
           <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-8 lg:px-8">
+            <div class="aspect-square w-full rounded-lg bg-gray-200 flex justify-center items-center text-gray-500 text-sm">
+              No Image
+            </div>
+            <div class="aspect-square w-full rounded-lg bg-gray-200 flex justify-center items-center text-gray-500 text-sm">
+              No Image
+            </div>
             <div class="aspect-square w-full rounded-lg bg-gray-200 flex justify-center items-center text-gray-500 text-sm">
               No Image
             </div>
