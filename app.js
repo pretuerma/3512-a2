@@ -59,9 +59,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const cachedProducts = localStorage.getItem("shoppee-products");
 
   if (cachedProducts) {
+    console.log("Loaded products from localStorage");
     products = JSON.parse(cachedProducts);
     initializeApp();  
   } else {
+    console.log("Fetching data from API...");
     fetch(API_URL)
       .then(res => res.json())
       .then(data => {
